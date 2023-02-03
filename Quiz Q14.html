@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script>
+      function isChristmasEve(date) {
+        var currentMonth = date.getMonth();
+        var currentDay = date.getDate();
+        if (currentMonth === 11 && currentDay === 24) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      function checkChristmasEve() {
+        var dateInput = new Date(document.getElementById("dateInput").value);
+        var result = isChristmasEve(dateInput);
+        if (result) {
+          document.getElementById("result").innerHTML = "It's Christmas Eve!";
+        } else {
+          document.getElementById("result").innerHTML = "It's not Christmas Eve.";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <label for="dateInput">Enter a date:</label>
+    <input type="text" id="dateInput" placeholder="YYYY-MM-DD">
+    <button onclick="checkChristmasEve()">Check</button>
+    <p id="result"></p>
+  </body>
+</html>
