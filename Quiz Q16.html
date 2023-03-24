@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <script>
+      function displayWelcomeMessage() {
+        var userName = document.getElementById("userName").value;
+        if (userName.length >= 3) {
+          document.getElementById("welcomeMessage").innerHTML = "Welcome, " + userName + "!";
+        } else {
+          document.getElementById("welcomeMessage").innerHTML = "Invalid input. Please enter a name with at least 3 characters.";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <label for="userName">Enter your name:</label>
+    <input type="text" id="userName">
+    <button onclick="displayWelcomeMessage()">Submit</button>
+    <p id="welcomeMessage"></p>
+  </body>
+</html>

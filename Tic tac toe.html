@@ -1,0 +1,59 @@
+<script>
+const board = [  ['', '', ''],
+  ['', '', ''],
+  ['', '', '']
+];
+
+const players = ['X', 'O'];
+
+let currentPlayer = 0;
+
+function printBoard() {
+  console.log(`${board[0][0]}|${board[0][1]}|${board[0][2]}`);
+  console.log(`-----`);
+  console.log(`${board[1][0]}|${board[1][1]}|${board[1][2]}`);
+  console.log(`-----`);
+  console.log(`${board[2][0]}|${board[2][1]}|${board[2][2]}`);
+}
+
+function getNextMove() {
+  console.log(`Player ${players[currentPlayer]}, enter your move (row column):`);
+  return readline.question().split(' ').map(Number);
+}
+
+function hasWon(player) {
+  for (let i = 0; i < 3; i++) {
+    // check rows
+    if (board[i][0] === player && board[i][1] === player && board[i][2] === player) {
+      return true;
+    }
+    // check columns
+    if (board[0][i] === player && board[1][i] === player && board[2][i] === player) {
+      return true;
+    }
+  }
+  // check diagonals
+  if (board[0][0] === player && board[1][1] === player && board[2][2] === player) {
+    return true;
+  }
+  if (board[0][2] === player && board[1][1] === player && board[2][0] === player) {
+    return true;
+  }
+  return false;
+}
+
+printBoard();
+while (true) {
+  const [row, col] = getNextMove();
+  board[row][col] = players[currentPlayer];
+  printBoard();
+  if (hasWon(players[currentPlayer])) {
+    console.log(`Player ${players[currentPlayer]} has won!`);
+    break;
+  }
+  currentPlayer = (currentPlayer + 1) % 2;
+}
+
+
+// This code uses a 3x3 two-dimensional array to represent the game board, with each element being either 'X', 'O', or an empty string. The printBoard function displays the current state of the board, and the getNextMove function prompts the player for their next move. The hasWon function checks if a player has won the game by having three of their symbols in a row either horizontally, vertically, or diagonally. The game continues until one player wins, at which point the program prints the winning player and exits.
+</script>
